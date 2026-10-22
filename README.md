@@ -1,4 +1,44 @@
-# 🎬Netflix Clone
+# 🎬 Netflix Clone
 
-A streaming-style browser app built with Next.js, TypeScript, and Tailwind CSS.
-Built as a learning project to practice production-style front architecture.
+A streaming-style browsing app built with Next.js, TypeScript, and Tailwind CSS.
+Built as a learning project to practice production-style frontend architecture.
+
+> ⚠️ Educational project. Not affiliated with Netflix. Movie data and images
+> are provided by [TMDB](https://www.themoviedb.org).
+
+## Tech Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- TMDB API
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20.9+
+- pnpm
+
+### Setup
+
+```bash
+git clone https://github.com/QueenNatty/netflix-clone.git
+cd netflix-clone
+pnpm install
+cp .env.example .env.local   # then add your TMDB API key
+pnpm dev
+```
+
+Open http://localhost:3000.
+
+## Roadmap
+
+- [ ] Project setup
+- [ ] Data layer (TMDB)
+- [ ] Hero banner and movie rows
+- [ ] Search
+- [ ] Movie details page
+
+## License
+
+MIT, see [LICENSE](./LICENSE).

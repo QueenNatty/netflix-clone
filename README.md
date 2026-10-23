@@ -1,4 +1,5 @@
 # 🎬 Netflix Clone
+**Live demo:** https://netflix-clone-six-xi-23.vercel.app/
 
 A streaming-style browsing app built with Next.js, TypeScript, and Tailwind CSS.
 Built as a learning project to practice production-style frontend architecture.

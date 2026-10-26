@@ -34,9 +34,9 @@ Open http://localhost:3000.
 
 ## Roadmap
 
-- [ ] Project setup
-- [ ] Data layer (TMDB)
-- [ ] Hero banner and movie rows
+- [x] Project setup
+- [x] Data layer (TMDB)
+- [x] Hero banner and movie rows
 - [ ] Search
 - [ ] Movie details page
 

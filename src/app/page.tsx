@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getTrending } from "@/lib/movies";
 import { posterUrl } from "@/lib/image";
 import { createClient } from "@/lib/supabase/server";
+import SignOutButton from "@/components/auth/SignOutButton";
 
 export default async function Home() {
   const movies = (await getTrending()).slice(0, 10);
@@ -10,6 +11,9 @@ export default async function Home() {
 
   return (
     <main className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-5">
+      <div className="col-span-full">
+        <SignOutButton />
+      </div>
       {movies.map((movie) => {
         const src = posterUrl(movie.poster_path);
         return (

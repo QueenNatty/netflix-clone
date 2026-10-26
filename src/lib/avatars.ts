@@ -5,4 +5,4 @@ export const AVATAR_STYLES: Record<string, string> = {
     yellow: "bg-yellow-600 text-black ",
 };
 
-export const AVATAR_KEYS = Object.keys(AVATAR_STYLES);
+export const AVATAR_KEYS = ["red", "blue", "green", "yellow"] as const;

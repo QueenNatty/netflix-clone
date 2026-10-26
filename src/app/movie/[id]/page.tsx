@@ -12,12 +12,8 @@ export default async function MoviePage({
   const { id } = await params;
   const movie = await getMovieDetails(id);
     const trailer = pickTrailer(movie.videos.results);
-    console.log("picked:", trailer?.type, trailer?.key);
   const backdrop = backdropUrl(movie.backdrop_path);
 
-  console.log(
-    movie.videos.results.map((v) => `${v.type} | ${v.site} | ${v.official}`),
-  );
   return (
     <main className="mx-auto max-w-4xl p-6">
       <Link href="/" className="text-neutral-400 hover:text-white">
@@ -30,6 +26,7 @@ export default async function MoviePage({
           alt=""
           width={780}
           height={439}
+          priority
           unoptimized
           className="mt-4 w-full rounded-md"
         />

@@ -3,6 +3,12 @@ import "server-only";
 const BASE_URL = process.env.TMDB_BASE_URL ?? "https://api.themoviedb.org/3";
 const TOKEN = process.env.TMDB_ACCESS_TOKEN;
 
+export class TmdbError extends Error {
+    constructor(public status: number, message: string) {
+        super(message);
+    }
+}
+
 export async function tmdbFetch<T>(
     endpoint: string,
     params: Record<string, string> = {},
@@ -24,7 +30,7 @@ export async function tmdbFetch<T>(
     });
 
     if (!res.ok) {
-        throw new Error(`TMDB ${res.status} ${res.statusText} on ${endpoint}`);
+        throw new TmdbError(res.status, `TMDB ${res.status} ${res.statusText} on ${endpoint}`);
     }
     return res.json() as Promise<T>;
 }

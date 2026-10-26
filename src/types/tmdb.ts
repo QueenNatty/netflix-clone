@@ -14,3 +14,24 @@ export interface TmdbListResponse<T> {
     total_page: number;
     total_results: number;
 }
+
+export interface Genre {
+    id:number;
+    name: string;
+}
+
+export interface Video {
+    id: string;
+    key: string;
+    name: string;
+    site: string;
+    type: string;
+    official:boolean;
+}
+
+export interface MovieDetails extends Movie {
+    runtime: number | null;
+    tagline: string;
+    genres: Genre[];
+    videos: { results: Video[] };
+}

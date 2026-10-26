@@ -2,9 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { getTrending } from "@/lib/movies";
 import { posterUrl } from "@/lib/image";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function Home() {
   const movies = (await getTrending()).slice(0, 10);
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
+  console.log("user:", data.user);
 
   return (
     <main className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-5">

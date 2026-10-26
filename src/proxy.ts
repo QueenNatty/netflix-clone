@@ -46,6 +46,13 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(homeUrl);
   }
 
+  const hasProfile = request.cookies.has("profile_id");
+  if (user && !isPublic && !hasProfile && !pathname.startsWith("/profiles")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/profiles";
+    return NextResponse.redirect(url);
+  }
+
   return response;
 }
 

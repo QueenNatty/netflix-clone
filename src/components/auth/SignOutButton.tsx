@@ -2,11 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { clearProfile } from "@/app/profiles/actions";
 
 export default function SignOutButton() {
   const router = useRouter();
 
   async function handleSignOut() {
+    await clearProfile();
     await createClient().auth.signOut();
     router.push("/login");
     router.refresh();

@@ -4,6 +4,7 @@ import { AVATAR_STYLES } from "@/lib/avatars";
 import AddProfileForm from "@/components/profiles/AddProfileForm";
 import { selectProfile } from "./actions";
 import SignOutButton from "@/components/auth/SignOutButton";
+import Link from "next/link";
 
 async function ProfileList() {
   const profiles = await getProfiles();
@@ -50,6 +51,13 @@ export default function ProfilesPage() {
       >
         <ProfileList />
       </Suspense>
+
+      <Link
+        href="/profiles/manage" 
+        className="text-neutral-400 hover:text-white"
+      >
+        Manage profiles
+      </Link>
     </main>
   );
 }

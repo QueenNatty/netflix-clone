@@ -59,3 +59,38 @@ export async function selectProfile(profileId: string): Promise<void> {
 export async function clearProfile(): Promise<void> {
   (await cookies()).delete("profile_id");
 }
+
+export async function renameProfile(
+  profileId: string,
+  formData: FormData
+): Promise<void> {
+  const parsed = profileSchema.shape.name.safeParse(formData.get("name"));
+  if(!parsed.success) return;
+
+  const supabase = await createClient();
+  await supabase
+    .from("profiles")
+    .update({ name: parsed.data })
+    .eq("id", profileId);
+
+  revalidatePath("/profiles", "layout");
+}
+
+export async function deleteProfile(profileId: string): Promise<void> {
+  const supabase = await createClient();
+
+  const { count } = await supabase
+    .from("profiles")
+    .select("*", { count: "exact", head: true });
+  if ((count ?? 0) <= 1) return;
+
+  await supabase.from("profiles").delete().eq("id", profileId);
+
+  const cookieStore = await cookies();
+  if (cookieStore.get("profile_id")?.value === profileId) {
+    cookieStore.delete("profile_id");
+  }
+
+  revalidatePath("/profiles", "layout");
+  
+}

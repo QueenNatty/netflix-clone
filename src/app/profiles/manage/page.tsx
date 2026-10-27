@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { getProfiles } from '@/lib/profiles';
 import { AVATAR_STYLES } from "@/lib/avatars";
-import { renameProfile, deleteProfile } from '../actions';
+import { deleteProfile } from '../actions';
+import RenameForm from "@/components/profiles/RenameForm";
 
 async function ManageList() {
     const profiles = await getProfiles();
@@ -16,18 +17,7 @@ async function ManageList() {
                         {p.name[0].toUpperCase()}
                     </div>
                     
-                    <form action={renameProfile.bind(null, p.id)} className="flex flex-1 gap-2">
-                        <input
-                            name="name"
-                            defaultValue={p.name}
-                            maxLength={20}
-                            required
-                            className="w-full rounded-md bg-neutral-800 px-3 py-3 outline-none focus:ring-2 focus:ring-red-600"
-                        />
-                        <button className="rounded-md bg-neutral-700 px-3 text-sm hover:bg-neutral-600">
-                            Save
-                        </button>
-                    </form>
+                    <RenameForm profileId={p.id} name={p.name} />
 
                     {profiles.length > 1 && (
                         <form action={deleteProfile.bind(null, p.id)}>

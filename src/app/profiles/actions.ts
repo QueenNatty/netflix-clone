@@ -60,20 +60,25 @@ export async function clearProfile(): Promise<void> {
   (await cookies()).delete("profile_id");
 }
 
+export type RenameState = { error?: string; ok?: boolean };
+
 export async function renameProfile(
   profileId: string,
+  _prev:RenameState,
   formData: FormData
-): Promise<void> {
+): Promise<RenameState> {
   const parsed = profileSchema.shape.name.safeParse(formData.get("name"));
-  if(!parsed.success) return;
+  if(!parsed.success) return{error: parsed.error.issues[0].message };
 
   const supabase = await createClient();
-  await supabase
+  const { error } = await supabase
     .from("profiles")
     .update({ name: parsed.data })
     .eq("id", profileId);
+  if (error) return { error: error.message };
 
   revalidatePath("/profiles", "layout");
+  return { ok: true };
 }
 
 export async function deleteProfile(profileId: string): Promise<void> {

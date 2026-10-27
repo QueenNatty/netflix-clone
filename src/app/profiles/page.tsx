@@ -3,6 +3,7 @@ import { getProfiles } from "@/lib/profiles";
 import { AVATAR_STYLES } from "@/lib/avatars";
 import AddProfileForm from "@/components/profiles/AddProfileForm";
 import { selectProfile } from "./actions";
+import SignOutButton from "@/components/auth/SignOutButton";
 
 async function ProfileList() {
   const profiles = await getProfiles();
@@ -41,6 +42,8 @@ async function ProfileList() {
 export default function ProfilesPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 p-6">
+      <div className="absolute right-6 top-6" />
+      <SignOutButton/>
       <h1 className="text-3xl font-bold">Who&apos;s watching?</h1>
       <Suspense
         fallback={<p className="text-neutral-400">Loading profiles...</p>}

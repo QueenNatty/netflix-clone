@@ -9,11 +9,11 @@ import { signupSchema, type SignupValues } from "@/lib/validations/auth";
 
 const input =
   "w-full rounded-md bg-neutral-800 px-3 py-2 outline-none focus:ring-2 focus:ring-red-600";
-const [checkEmail, setCheckEmail] = useState(false);  
 
 export default function SignupForm() {
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
+  const [checkEmail, setCheckEmail] = useState(false);  
   const {
     register,
     handleSubmit,

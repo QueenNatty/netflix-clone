@@ -8,9 +8,9 @@ export default function SignupPage() {
       <h1 className="text-3xl font-bold">Sign up</h1>
       <SignupForm />
       <div className="flex items-center gap-3 text-sm text-neutral-500">
-              <div className="h-ph flex-1 bg-neutral-800" />
+              <div className="h-px flex-1 bg-neutral-800" />
               or
-              <div className="h-ph flex-1 bg-neutral-800" />
+              <div className="h-px flex-1 bg-neutral-800" />
             </div>
             <GoogleButton/>
       <p className="text-sm text-neutral-400">

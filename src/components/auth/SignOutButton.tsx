@@ -1,0 +1,25 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import { clearProfile } from "@/app/profiles/actions";
+
+export default function SignOutButton() {
+  const router = useRouter();
+
+  async function handleSignOut() {
+    await clearProfile();
+    await createClient().auth.signOut();
+    router.push("/login");
+    router.refresh();
+  }
+
+  return (
+    <button
+      onClick={handleSignOut}
+      className="rounded-md bg-neutral-800 px-3 py-1 text-sm hover:bg-neutral-700"
+    >
+      Sign out
+    </button>
+  );
+}

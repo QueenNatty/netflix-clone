@@ -2,12 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { getTrending } from "@/lib/movies";
 import { posterUrl } from "@/lib/image";
+import { createClient } from "@/lib/supabase/server";
+import SignOutButton from "@/components/auth/SignOutButton";
+import { Suspense } from "react";
+import CurrentProfile from "@/components/CurrentProfile";
 
 export default async function Home() {
   const movies = (await getTrending()).slice(0, 10);
 
+
   return (
     <main className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-5">
+      <div className="col-span-full flex justify-end">
+        <Suspense fallback={null}>
+          <CurrentProfile />
+        </Suspense>
+      </div>
       {movies.map((movie) => {
         const src = posterUrl(movie.poster_path);
         return (

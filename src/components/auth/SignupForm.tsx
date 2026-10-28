@@ -39,6 +39,7 @@ export default function SignupForm() {
 
     router.push("/");
     router.refresh();
+  }
 
     if (checkEmail) {
       return (
@@ -95,4 +96,3 @@ export default function SignupForm() {
       </form>
     );
   }
-}

@@ -37,6 +37,8 @@ Open http://localhost:3000.
 - [x] Project setup
 - [x] Data layer (TMDB)
 - [x] Hero banner and movie rows
+- [x] Authentication (email + Google)
+- [x] Profile selection
 - [ ] Search
 - [ ] Movie details page
 

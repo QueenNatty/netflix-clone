@@ -17,7 +17,7 @@ export default async function CurrentProfile() {
       >
         {profile.name[0].toUpperCase()}
       </div>
-      <span className="text-sm">{profile.name}</span>
+      <span className="hidden text-sm sm:inline">{profile.name}</span>
       <Link
         href="/profiles"
         className="text-sm text-neutral-400 hover:text-white"

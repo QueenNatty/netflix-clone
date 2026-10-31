@@ -22,7 +22,7 @@ export default function MovieCard({
           width={342}
           height={513}
           unoptimized
-          className="rounded-md transition hover:scale-105"
+          className="h-auto w-full rounded-md transition hover:scale-105"
         />
       ) : (
         <div className="flex aspect-2/3 items-center justify-center rounded-md bg-neutral-800 p-2 text-center text-sm">

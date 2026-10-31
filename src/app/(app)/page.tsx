@@ -1,22 +1,25 @@
-import { getTrending } from "@/lib/movies";
-import { createClient } from "@/lib/supabase/server";
-import SignOutButton from "@/components/auth/SignOutButton";
-import MovieCard from "@/components/MovieCard";
+import MovieRow from "@/components/MovieRow";
+import {
+  getTrending,
+  getPopular,
+  getTopRated,
+  getUpcoming,
+} from "@/lib/movies";
 
 export default async function Home() {
-  const movies = (await getTrending()).slice(0, 10);
-
+  const [trending, popular, topRated, upcoming] = await Promise.all([
+    getTrending(),
+    getPopular(),
+    getTopRated(),
+    getUpcoming(),
+  ]);
 
   return (
-    <main className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-5">
-      {movies.map((movie) => (
-  <MovieCard
-    key={movie.id}
-    id={movie.id}
-    title={movie.title}
-    posterPath={movie.poster_path}
-  />
-))}
+    <main className="space-y-6 pb-12">
+      <MovieRow title="Trending This Week" movies={trending} />
+      <MovieRow title="Popular" movies={popular} />
+      <MovieRow title="Top Rated" movies={topRated} />
+      <MovieRow title="Coming Soon" movies={upcoming} />
     </main>
   );
 }

@@ -13,7 +13,7 @@ export default function NavbarShell({ children }: { children: React.ReactNode })
 
     return (
         <header
-            className={`fixed insert-x-0 top-0 z-50 flex items-center justify-between px-6 pt-3 transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur" : "bg-linear-to-b from-black/80 to-transparent"
+            className={`fixed insert-x-0 top-0 z-50 flex items-center justify-between px-6 pt-3 gap-4 transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur" : "bg-linear-to-b from-black/80 to-transparent"
                 }`}
         >
             {children}

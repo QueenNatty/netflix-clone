@@ -1,3 +1,4 @@
+import Hero from "@/components/Hero";
 import MovieRow from "@/components/MovieRow";
 import {
   getTrending,
@@ -15,11 +16,14 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="space-y-6 pb-12">
+    <main className="pb-12">
+      <Hero movies={trending} />
+      <div className="mt-6 space-y-6">
       <MovieRow title="Trending This Week" movies={trending} />
       <MovieRow title="Popular" movies={popular} />
       <MovieRow title="Top Rated" movies={topRated} />
       <MovieRow title="Coming Soon" movies={upcoming} />
+      </div>
     </main>
   );
 }

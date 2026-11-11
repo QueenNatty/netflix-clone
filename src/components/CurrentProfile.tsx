@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/profiles";
-import { AVATAR_STYLES } from "@/lib/avatars";
+import Avatar from "@/components/Avatar";
 import SignOutButton from "@/components/auth/SignOutButton";
 
 export default async function CurrentProfile() {
@@ -10,13 +10,7 @@ export default async function CurrentProfile() {
 
   return (
     <div className="flex items-center gap-3">
-      <div
-        className={`flex h-8 w-8 items-center justify-center rounded text-sm font-bold ${
-          AVATAR_STYLES[profile.avatar] ?? AVATAR_STYLES.red
-        }`}
-      >
-        {profile.name[0].toUpperCase()}
-      </div>
+      <Avatar avatar={profile.avatar} name={profile.name} className="h-8 w-8 text-sm" />
       <span className="hidden text-sm sm:inline">{profile.name}</span>
       <Link
         href="/profiles"

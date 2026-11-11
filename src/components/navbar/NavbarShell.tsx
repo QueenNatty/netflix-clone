@@ -16,13 +16,14 @@ export default function NavbarShell({
     }, []);
 
     return (
-        <header
-            className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-4 px-6 py-3 transition-all duration-300 ${scrolled
-                    ? "border-b border-white/10 bg-neutral-950/70 backdrop-blur-md"
-                    : "bg-linear-to-b from-black/80 to-transparent"
-                }`}
-        >
-            {children}
-        </header>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-4 px-6 py-3 transition-colors duration-300 ${
+          scrolled
+            ? "bg-neutral-950/70 shadow-[0_1px_0_0_rgba(255,255,255,0.1)] backdrop-blur-md"
+            : "bg-linear-to-b from-black/80 to-transparent"
+        }`}
+      >
+        {children}
+      </header>
     );
 }

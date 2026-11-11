@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-export default function NavbarShell({ children }: { children: React.ReactNode }) {
+export default function NavbarShell({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -13,7 +17,9 @@ export default function NavbarShell({ children }: { children: React.ReactNode })
 
     return (
         <header
-            className={`fixed insert-x-0 top-0 z-50 flex items-center justify-between px-6 pt-3 gap-4 transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur" : "bg-linear-to-b from-black/80 to-transparent"
+            className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-4 px-6 py-3 transition-all duration-300 ${scrolled
+                    ? "border-b border-white/10 bg-neutral-950/70 backdrop-blur-md"
+                    : "bg-linear-to-b from-black/80 to-transparent"
                 }`}
         >
             {children}

@@ -15,7 +15,16 @@ export default function Navbar() {
                     MOVIEZONE
                     </span>
                 </Link>
+                <Suspense
+                fallback={
+                    <nav className="flex gap-4 text-sm text-neutral-400">
+                        <span>Home</span>
+                        <span>My List</span>
+                    </nav>
+                }
+                >
                 <NavbarLinks />
+                </Suspense>
             </div>
             <Suspense fallback={null}>
                 <CurrentProfile />

@@ -5,6 +5,7 @@ import AddProfileForm from "@/components/profiles/AddProfileForm";
 import { selectProfile } from "./actions";
 import SignOutButton from "@/components/auth/SignOutButton";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 async function ProfileList() {
   const profiles = await getProfiles();

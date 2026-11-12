@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { getProfiles } from '@/lib/profiles';
-import Avatar from "@/components/Avatar";
+import ChangeAvatar from "@/components/profiles/ChangeAvatar";
 import { deleteProfile } from '../actions';
 import RenameForm from "@/components/profiles/RenameForm";
 
@@ -11,8 +11,8 @@ async function ManageList() {
     return (
         <ul className="w-full max-w-md space-y-4">
             {profiles.map((p) => (
-                <li key={p.id} className="flex items-center gap-3">
-                    <Avatar avatar={p.avatar} name={p.name} className="h-12 w-12 text-lg" />
+                <li key={p.id} className="flex  flex-wrap items-center gap-3">
+                    <ChangeAvatar profileId={p.id} name={p.name} current={p.avatar} />
                     
                     <RenameForm profileId={p.id} name={p.name} />
 

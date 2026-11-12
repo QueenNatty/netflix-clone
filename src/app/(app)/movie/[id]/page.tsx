@@ -6,6 +6,7 @@ import { pickTrailer } from "@/lib/videos";
 import { Suspense } from "react";
 import WatchlistToggle from "@/components/watchlist/WatchlistToggle";
 
+export const dynamic = 'force-dynamic';
 export default async function MoviePage({
   params,
 }: {

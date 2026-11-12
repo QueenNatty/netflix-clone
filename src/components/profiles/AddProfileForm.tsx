@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createProfile } from "@/app/profiles/actions";
-import { AVATAR_KEYS, AVATAR_STYLES } from "@/lib/avatars";
+import { AVATAR_SEEDS } from "@/lib/avatars";
+import Avatar from "@/components/Avatar";
 import { profileSchema, type ProfileValues } from "@/lib/validations/profile";
 
 export default function AddProfileForm() {
@@ -16,7 +17,7 @@ export default function AddProfileForm() {
     formState: { errors, isSubmitting },
   } = useForm<ProfileValues>({
     resolver: zodResolver(profileSchema),
-    defaultValues: { name: "", avatar: "red" },
+    defaultValues: { name: "", avatar: "Felix" },
   });
 
   async function onSubmit(values: ProfileValues) {
@@ -48,18 +49,22 @@ export default function AddProfileForm() {
         )}
       </div>
 
-      <div className="flex gap-3">
-        {AVATAR_KEYS.map((key) => (
-          <label key={key} className="cursor-pointer">
+      <div className="grid grid-cols-6 gap-2">
+        {AVATAR_SEEDS.map((seed) => (
+          <label key={seed} className="cursor-pointer">
             <input
               type="radio"
-              value={key}
+              value={seed}
               {...register("avatar")}
               className="peer sr-only"
             />
-            <span
-              className={`block h-10 w-10 rounded-md opacity-60 peer-checked:opacity-100 peer-checked:ring-2 peer-checked:ring-white ${AVATAR_STYLES[key]}`}
-            />
+            <span className="block rounded-md opacity-60 ring-2 ring-transparent transition hover:opacity-100 peer-checked:opacity-100 peer-checked:ring-white peer-focus-visible:ring-red-500">
+              <Avatar
+                avatar={seed}
+                name={seed}
+                className="aspect-square w-full"
+              />
+            </span>
           </label>
         ))}
       </div>

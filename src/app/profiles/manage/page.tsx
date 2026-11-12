@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { getProfiles } from '@/lib/profiles';
-import { AVATAR_STYLES } from "@/lib/avatars";
+import ChangeAvatar from "@/components/profiles/ChangeAvatar";
 import { deleteProfile } from '../actions';
 import RenameForm from "@/components/profiles/RenameForm";
 
@@ -11,11 +11,8 @@ async function ManageList() {
     return (
         <ul className="w-full max-w-md space-y-4">
             {profiles.map((p) => (
-                <li key={p.id} className="flex items-center gap-3">
-                    <div className="{`flex h-12 w-12 shrink-0 items-center justify-center rounded-md font-bold ${
-                    AVATAR_STYLRS[p.avatar] ?? AVATAR_STYLE.red}`}">
-                        {p.name[0].toUpperCase()}
-                    </div>
+                <li key={p.id} className="flex  flex-wrap items-center gap-3">
+                    <ChangeAvatar profileId={p.id} name={p.name} current={p.avatar} />
                     
                     <RenameForm profileId={p.id} name={p.name} />
 

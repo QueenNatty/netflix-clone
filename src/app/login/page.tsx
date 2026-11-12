@@ -1,10 +1,12 @@
 import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
-import GoogleButton from "@/components/auth/GoogleButton"
+import GoogleButton from "@/components/auth/GoogleButton";
+import AuthBackdrop from "@/components/auth/AuthBackdrop";
 
 export default function LoginPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 p-6">
+      <AuthBackdrop/>
       <h1 className="text-3xl font-bold">Sign in</h1>
       <LoginForm />
       <div className="flex items-center gap-3 text-sm text-neutral-500">

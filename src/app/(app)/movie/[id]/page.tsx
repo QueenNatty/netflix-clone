@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getMovieDetails } from "@/lib/movies";
 import { backdropUrl } from "@/lib/image";
 import { pickTrailer } from "@/lib/videos";
+import { Suspense } from "react";
+import WatchlistToggle from "@/components/watchlist/WatchlistToggle";
 
 export default async function MoviePage({
   params,
@@ -55,6 +57,14 @@ export default async function MoviePage({
       </div>
 
       <p className="mt-4 leading-relaxed">{movie.overview}</p>
+
+      <div className="mt-4">
+        <Suspense
+          fallback={<div className="h-10 w-32 animate-pulse rounded-md bg-neutral-800" />}
+        >
+          <WatchlistToggle movieId={movie.id} />
+        </Suspense>
+      </div>
 
       {trailer ? (
         <iframe

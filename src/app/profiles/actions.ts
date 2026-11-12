@@ -99,3 +99,21 @@ export async function deleteProfile(profileId: string): Promise<void> {
   revalidatePath("/profiles", "layout");
   
 }
+
+export async function updateAvatar(
+  profileId: string,
+  avatar: string
+): Promise<{ error?: string }> {
+  const parsed = profileSchema.shape.avatar.safeParse(avatar);
+  if (!parsed.success) return { error: "Invalid avatar" };
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("profiles")
+    .update({ avatar: parsed.data })
+    .eq("id", profileId);
+  if (error) return { error: error.message };
+
+  revalidatePath("/", "layout");
+  return {};
+}

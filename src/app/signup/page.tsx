@@ -1,10 +1,12 @@
 import Link from "next/link";
 import SignupForm from "@/components/auth/SignupForm";
-import GoogleButton from "@/components/auth/GoogleButton"
+import GoogleButton from "@/components/auth/GoogleButton";
+import AuthBackdrop from "@/components/auth/AuthBackdrop";
 
 export default function SignupPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 p-6">
+      <AuthBackdrop/>
       <h1 className="text-3xl font-bold">Sign up</h1>
       <SignupForm />
       <div className="flex items-center gap-3 text-sm text-neutral-500">

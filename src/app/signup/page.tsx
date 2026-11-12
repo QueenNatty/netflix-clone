@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SignupForm from "@/components/auth/SignupForm";
-import GoogleButton from "@/components/auth/GoogleButton"
+import GoogleButton from "@/components/auth/GoogleButton";
+import AuthBackdrop from "@/components/auth/AuthBackdrop";
 
 export default function SignupPage() {
   return (
